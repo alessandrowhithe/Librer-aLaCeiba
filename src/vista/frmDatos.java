@@ -4,6 +4,9 @@
  */
 package vista;
 
+import modelo.Libreria;
+import modelo.Libros;
+
 /**
  *
  * @author Estudiante
@@ -15,6 +18,15 @@ public class frmDatos extends javax.swing.JFrame {
      */
     public frmDatos() {
         initComponents();
+    }
+    
+        
+    public static void initCRUD() {
+        //Libros modelo = new Libros();
+        frmDatos vista = new frmDatos();
+       // c ct = new ctrlFrmlibreria_libros(vista, modelo);
+        vista.setVisible(true);
+        
     }
 
     /**
@@ -272,7 +284,7 @@ public class frmDatos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmDatos().setVisible(true);
+                initCRUD();
             }
         });
     }

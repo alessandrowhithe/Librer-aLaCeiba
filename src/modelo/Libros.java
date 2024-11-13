@@ -5,6 +5,8 @@ import java.sql.*;
 import java.util.UUID;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import vista.frmDatos;
+
 
 
 public class Libros {
@@ -151,5 +153,87 @@ public class Libros {
             System.out.println("Este es el error en el modelo, metodo mostrar " + e);
         }
     }
+        
+     public void Eliminar(JTable tabla) {
+        //Creamos una variable igual a ejecutar el método de la clase de conexión
+        Connection conexion = ClaseConexion.getConexion();
+ 
+        //obtenemos que fila seleccionó el usuario
+        int filaSeleccionada = tabla.getSelectedRow();
+        //Obtenemos el id de la fila seleccionada
+        String miId = tabla.getValueAt(filaSeleccionada, 0).toString();
+        //borramos 
+        try {
+            PreparedStatement deleteEstudiante = conexion.prepareStatement("delete from tbLibros where UUID_Libros = ?");
+            deleteEstudiante.setString(1, miId);
+            deleteEstudiante.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("este es el error metodo de eliminar" + e);
+        }
+    }
+     
+       public void cargarDatosTabla(frmDatos frmDatos) {
+        // Obtén la fila seleccionada 
+        int filaSeleccionada =frmDatos.jtLibros.getSelectedRow();
+ 
+        // Debemos asegurarnos que haya una fila seleccionada antes de acceder a sus valores
+        if (filaSeleccionada != -1) {
+            String UUIDDeTb = frmDatos.jtLibros.getValueAt(filaSeleccionada, 0).toString();
+            String Nombre = frmDatos.jtLibros.getValueAt(filaSeleccionada, 1).toString();
+            String Autor = frmDatos.jtLibros.getValueAt(filaSeleccionada, 2).toString();
+            String Año = frmDatos.jtLibros.getValueAt(filaSeleccionada, 3).toString();
+            String Estado = frmDatos.jtLibros.getValueAt(filaSeleccionada, 4).toString();
+            String ISBN = frmDatos.jtLibros.getValueAt(filaSeleccionada, 5).toString();
+            String Genero = frmDatos.jtLibros.getValueAt(filaSeleccionada, 6).toString();
+            String paginas = frmDatos.jtLibros.getValueAt(filaSeleccionada, 7).toString();
+             String Editorial = frmDatos.jtLibros.getValueAt(filaSeleccionada, 8).toString();
+                       
+
+
+            // Establece los valores en los campos de texto
+            frmDatos.txtNombre.setText(Nombre);
+            frmDatos.txtAutor.setText(Autor);
+            frmDatos.txtAno.setText(Año);
+            frmDatos.txtEstado.setText(Estado);
+            frmDatos.txtISBN.setText(ISBN);
+            frmDatos.txtGenero.setText(Genero);
+            frmDatos.txtPaginas.setText(paginas);
+            frmDatos.txtEditorial.setText(Editorial);
+
+        }
+    }
+        
+        
+         public void Actualizar(JTable tabla) {
+        //Creamos una variable igual a ejecutar el método de la clase de conexión
+        Connection conexion = ClaseConexion.getConexion();
+        //obtenemos que fila seleccionó el usuario
+        int filaSeleccionada = tabla.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            //Obtenemos el id de la fila seleccionada
+            String miUUId = tabla.getValueAt(filaSeleccionada, 0).toString();
+            try { 
+                //Ejecutamos la Query
+                PreparedStatement updateUser = conexion.prepareStatement("update tbLibros set nombre_libro = ?, autor = ?, ano_publicacion = ?, estado = ?, ISBN = ?, genero = ?, paginas = ?, editorial = ?, where UUUID_libros = ?");
+                updateUser.setString(1, getNombre_libro());
+                updateUser.setString(2, getAutor());
+                updateUser.setInt(3, getAno_publicacion());
+                updateUser.setString(4, getEstado());
+                updateUser.setInt(5, getISBN());
+                updateUser.setString(6, getGenero());
+                updateUser.setInt(7, getPaginas());
+                updateUser.setString(8, getEditorial());
+                updateUser.setString(10, miUUId);
+                updateUser.executeUpdate();
+ 
+            } catch (Exception e) {
+                System.out.println("este es el error en el metodo de actualizar" + e);
+            }
+        } else {
+            System.out.println("no");
+        }
+    }  
+        
+        
     
 }

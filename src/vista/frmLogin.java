@@ -4,6 +4,9 @@
  */
 package vista;
 
+import controlador.ctrlFrmLibros_Librería;
+import modelo.Libreria;
+
 /**
  *
  * @author Estudiante
@@ -15,6 +18,15 @@ public class frmLogin extends javax.swing.JFrame {
      */
     public frmLogin() {
         initComponents();
+    }
+    
+        
+    public static void initLogin() {
+        Libreria modelo = new Libreria();
+        frmLogin vista = new frmLogin();
+        ctrlFrmLibros_Librería ct = new ctrlFrmLibros_Librería(vista, modelo);
+        vista.setVisible(true);
+        
     }
 
     /**
@@ -37,6 +49,7 @@ public class frmLogin extends javax.swing.JFrame {
         txtCorreoL = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtContrasenaL = new javax.swing.JTextField();
+        btnIniciar = new javax.swing.JButton();
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
         jLabel3.setText("Nombre");
@@ -53,7 +66,7 @@ public class frmLogin extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Estudiante\\Documents\\ceiba.png")); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 120, 370, 251));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 120, 370, 251));
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 102));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,7 +95,10 @@ public class frmLogin extends javax.swing.JFrame {
                 txtContrasenaLActionPerformed(evt);
             }
         });
-        jPanel3.add(txtContrasenaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 410, 50));
+        jPanel3.add(txtContrasenaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 410, 50));
+
+        btnIniciar.setText("Iniciar Sesión");
+        jPanel3.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 450, 160, 60));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -95,7 +111,7 @@ public class frmLogin extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -155,12 +171,13 @@ public class frmLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmLogin().setVisible(true);
+                initLogin();
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnIniciar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

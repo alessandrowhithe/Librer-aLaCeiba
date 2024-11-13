@@ -4,6 +4,9 @@
  */
 package vista;
 
+import controlador.ctrlFrmlibreria_libros;
+import modelo.Libreria;
+
 /**
  *
  * @author aless
@@ -15,6 +18,14 @@ public class frmLibros extends javax.swing.JFrame {
      */
     public frmLibros() {
         initComponents();
+    }
+    
+    public static void initRegistro() {
+        Libreria modelo = new Libreria();
+        frmLibros vista = new frmLibros();
+        ctrlFrmlibreria_libros ct = new ctrlFrmlibreria_libros(vista, modelo);
+        vista.setVisible(true);
+        
     }
 
     /**
@@ -39,6 +50,7 @@ public class frmLibros extends javax.swing.JFrame {
         txtEdadR = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        btnInformación = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -49,62 +61,70 @@ public class frmLibros extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
         jLabel1.setText("Nombre");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, 20));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, 20));
 
         txtNombreR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreRActionPerformed(evt);
             }
         });
-        jPanel2.add(txtNombreR, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 420, 40));
+        jPanel2.add(txtNombreR, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 420, 40));
 
         txtApellidoR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApellidoRActionPerformed(evt);
             }
         });
-        jPanel2.add(txtApellidoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 420, 40));
+        jPanel2.add(txtApellidoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 420, 40));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
         jLabel2.setText("Apellido");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, 20));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, 20));
 
         txtCorreoR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCorreoRActionPerformed(evt);
             }
         });
-        jPanel2.add(txtCorreoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 420, 40));
+        jPanel2.add(txtCorreoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 420, 40));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
         jLabel3.setText("Correo Eléctronico");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, -1, 20));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, 20));
 
         txtContrasenaR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtContrasenaRActionPerformed(evt);
             }
         });
-        jPanel2.add(txtContrasenaR, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 420, 40));
+        jPanel2.add(txtContrasenaR, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 420, 40));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
         jLabel4.setText("Contraseña");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, -1, 20));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, -1, 20));
 
         txtEdadR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEdadRActionPerformed(evt);
             }
         });
-        jPanel2.add(txtEdadR, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 420, 40));
+        jPanel2.add(txtEdadR, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, 420, 40));
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
         jLabel5.setText("Edad");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, -1, 20));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, -1, 20));
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
         jLabel6.setText("¡REGISTRATE!");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
+
+        btnInformación.setText("Guardar Información");
+        btnInformación.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInformaciónActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnInformación, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 160, 50));
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -161,6 +181,10 @@ public class frmLibros extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEdadRActionPerformed
 
+    private void btnInformaciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformaciónActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInformaciónActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -191,12 +215,13 @@ public class frmLibros extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmLibros().setVisible(true);
+               initRegistro();
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnInformación;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
